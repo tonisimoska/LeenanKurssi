@@ -2,65 +2,65 @@
 /* func_gallery.php
 Gallerian funktiot
 */
-function image_information($original_file)
+function imageInformation($originalFile)
 {
-    // Ottaa tarkistettavan tiedoston nimen ja tarkistaa sen tiedostopÃ¤Ã¤tteen vÃ¤littÃ¤mÃ¤ttÃ¤ tiedostonimestÃ¤, toimii kuville
-    $type = getimagesize($original_file);
-    $filesize = filesize($original_file);
+    // Ottaa tarkistettavan tiedoston nimen ja tarkistaa sen tiedostopäätteen välittämättä tiedostonimestä, toimii kuville
+    $type = getimagesize($originalFile);
+    $filesize = filesize($originalFile);
    
     // Tarkistetaan tiedoston tyyppi
 	
     if($type[2] == 1) // GIF
     {
-        $file_extension = "gif";
+        $fileExtension = "gif";
     }
-    else if($type[2] == 2) // JPEG
+    elseif($type[2] == 2) // JPEG
     {
-        $file_extension = "jpg";
+        $fileExtension = "jpg";
     }
-    else if($type[2] == 3) // PNG
+    elseif($type[2] == 3) // PNG
     {
-        $file_extension = "png";
+        $fileExtension = "png";
     }
     else // Tiedostomuoto ei ole tuettu, palauttaa FALSE
     {
-        $file_extension = FALSE;
+        $fileExtension = FALSE;
     }
     // Funktio palauttaa arvot, jos ok
-    if($file_extension)
+    if($fileExtension)
     {
-        // palauttaa type,tiedostopÃ¤Ã¤te,leveys,korkeus,tiedostokoko
-        return array($type[2],$file_extension,$type[0],$type[1],$filesize);
+        // palauttaa type,tiedostopääte,leveys,korkeus,tiedostokoko
+        return array($type[2],$fileExtension, $type[0], $type[1], $filesize);
     }
     else
     {
-        // Tiedostotyyppi ei ole tuettu tai jotain hÃ¤iriÃ¶tÃ¤
-        return array(FALSE,FALSE,FALSE,FALSE);
+        // Tiedostotyyppi ei ole tuettu tai jotain häiriÃ¶tä
+        return array(FALSE, FALSE, FALSE, FALSE);
         }
     }
 
-function create_resized_image($original_file,$destination_file,$resized_width,$resized_height)
+function createResizedImage($originalFile, $destinationFile, $resizeWidth, $resizedHeight)
 {
-    // Ottaa syÃ¶tteenÃ¤ vastaan (alkuperÃ¤inen tiedosto), (uuden kuvan hakemisto/tiedosto ilman pÃ¤Ã¤tettÃ¤), (uusi leveys), (uusi korkeus)
+    // Ottaa syötteenä vastaan (alkuperäinen tiedosto), (uuden kuvan hakemisto/tiedosto ilman päätettä), (uusi leveys), (uusi korkeus)
    
-    // SelvitetÃ¤Ã¤n kuvan koko ja tyyppi
-    list($original_width, $original_height, $type) = getimagesize($original_file);
+    // Selvitetään kuvan koko ja tyyppi
+    list($originalWidth, $originalHeight, $type) = getimagesize($originalFile);
    
     // Tarkistetaan tiedoston tyyppi
     if($type == 1) // GIF
     {
-        $original_image = imagecreatefromgif($original_file);
+    	$originalFile = imagecreatefromgif($originalFile);
         // Lapinakyvyys -> valkoinen
-        $white = imagecolorallocate($original_image, 255, 255, 255);
-        $transparent = imagecolortransparent($original_image, $white);
+        $white = imagecolorallocate($originalImage, 255, 255, 255);
+        $transparent = imagecolortransparent($originalFile, $white);
     }
     elseif($type == 2) // JPEG
     {
-        $original_image = imagecreatefromjpeg($original_file);
+    	$originalFile = imagecreatefromjpeg($originalFile);
     }
     elseif($type == 3) // PNG
     {
-        $original_image = imagecreatefrompng($original_file);
+    	$originalFile = imagecreatefrompng($originalFile);
     }
     else // Tiedostomuoto ei ole tuettu, palauttaa FALSE
     {
@@ -68,86 +68,98 @@ function create_resized_image($original_file,$destination_file,$resized_width,$r
     }
     if($type)
     {
-        // Lasketaan kuvalle uusi koko siten, ettÃ¤ kuvasuhde sÃ¤ilyy
-        $new_w = $original_width/$resized_width; // Kuvasuhde: leveys
-        $new_h = $original_height/$resized_height; // Kuvasuhde: korkeus
-        if($new_w > $new_h || $new_w == $new_h)
+        // Lasketaan kuvalle uusi koko siten, että kuvasuhde säilyy
+        $newW = $originalWidth/$resizedWidth; // Kuvasuhde: leveys
+        $newH = $originalHeight/$resizedHeight; // Kuvasuhde: korkeus
+        if($newW > $new_h || $newW == $new_h)
         {
-            if($new_w < 1)
+            if($newW < 1)
             {
                 // Jos alkuperainen kuva on pienempi kuin luotava, luodaan alkuperaisen kokoinen kuva
-                $new_w = 1;
+                $newW = 1;
             }
-            // KÃ¤ytetÃ¤Ã¤n sitÃ¤ suhdetta, jolla tulee max. asetettu leveys, korkeus on alle max.
-            $new_width = $original_width / $new_w;
-            $new_height = $original_height / $new_w;
+            // Käytetään sitä suhdetta, jolla tulee max. asetettu leveys, korkeus on alle max.
+            $newWidth = $originalWidth / $newW;
+            $newHeight = $originalHeight / $newW;
         }
-        elseif($new_w < $new_h)
+        elseif($newW < $newH)
         {
-            if($new_h < 1)
+            if($newH < 1)
             {
-                // Jos alkuperÃ¤inen kuva on pienempi kuin luotava, luodaan alkuperÃ¤isen kokoinen kuva
-                $new_h = 1;
+                // Jos alkuperäinen kuva on pienempi kuin luotava, luodaan alkuperäisen kokoinen kuva
+                $newH = 1;
             }
-            // KÃ¤ytetÃ¤Ã¤n sitÃ¤ suhdetta, jolla tulee max. asetettu korkeus, leveys on alle max.
-            $new_width = $original_width / $new_h;
-            $new_height = $original_height / $new_h;
+            // Käytetään sitä suhdetta, jolla tulee max. asetettu korkeus, leveys on alle max.
+            $newWidth = $originalWidth / $new_h;
+            $newHeight = $originalHeight / $new_h;
         }
-        // Luodaan kuva, joka on mÃ¤Ã¤rÃ¤tyn kokoinen
-        $image = imagecreatetruecolor($new_width, $new_height);
+        // Luodaan kuva, joka on määrätyn kokoinen
+        $image = imagecreatetruecolor($newWidth, $newHeight);
 		
         // Resample, luo uuden kuvan tiedostoon
-        imagecopyresampled($image, $original_image, 0, 0, 0, 0, $new_width, $new_height, $original_width, $original_height);
+        imagecopyresampled(
+        		$image,
+        		$originalImage,
+        		0,
+        		0,
+        		0,
+        		0,
+        		$newWidth,
+        		$newHeight,
+        		$originalWidth,
+        		$originalHeight
+        		);
        
-        // Tallennetaan uusi kuva mÃ¤Ã¤riteltyyn tiedostoon ja annetaan sopiva tiedostopÃ¤Ã¤te
+        // Tallennetaan uusi kuva määriteltyyn tiedostoon ja annetaan sopiva tiedostopääte
         if($type == 1) // GIF
         {
-            imagegif($image, $destination_file);
+            imagegif($image, $destinationFile);
         }
-        else if($type == 2) // JPEG
+        elseif($type == 2) // JPEG
         {
-            imagejpeg($image, $destination_file);
+            imagejpeg($image, $destinationFile);
         }
-        else if($type == 3) // PNG
+        elseif($type == 3) // PNG
         {
-            imagepng($image, $destination_file);
+            imagepng($image, $destinationFile);
         }
     }
-    // Poistetaan kuva muistista, ei tuhoa alkuperÃ¤istÃ¤ tiedostoa!
+    // Poistetaan kuva muistista, ei tuhoa alkuperäistä tiedostoa!
     imagedestroy($image);
     // Palauttaa tiedostotyypin onnistuessaan, FALSE jos ei onnistu
     return $type;
     }
     
     
-function luo_kansio($maakansio,$galleriakansio) 
+function luoKansio($maakansio, $galleriakansio) 
 {  
-  $ok=FALSE; 
+  $ok = FALSE; 
   
   /* luo galleriakansio ja pura suojaukset*/
-  $polku="./sisaltokuvat/".$maakansio."/".$galleriakansio;
+  $polku = "./sisaltokuvat/".$maakansio."/".$galleriakansio;
   if(mkdir($polku, 0777)) 
-	$ok=TRUE;
+	$ok = TRUE;
   
   /*luo alikansiot thumbs, upload ja kuvat*/
-  $thumbpolku=$polku."/thumbs";
-  $kuvatpolku= $polku."/kuvat";
-  $uploadpolku= $polku."/upload";
+  $thumbpolku = $polku."/thumbs";
+  $kuvatpolku = $polku."/kuvat";
+  $uploadpolku = $polku."/upload";
   if($ok)
   {
 	 if(mkdir($thumbpolku, 0755) && mkdir($kuvatpolku, 0755) && mkdir($uploadpolku, 0755)) $ok=TRUE;
   }
-  suojaa_kansio($polku);
+  suojaaKansio($polku);
   return $ok;
 }
 
-function pura_suojaus($kansio)
+function puraSuojaus($kansio)
 {
 	chmod($kansio, 0777);
 }
 
-function suojaa_kansio($kansio)
+function suojaaKansio($kansio)
 {
 	chmod($kansio, 0755);
 }
+
 ?>
