@@ -78,10 +78,11 @@
 			<ul id="logo">
 				<li>Logo</li>
 					<ol>
+					<img class="logo-right" src="logo.svg">
 					<li>Teksti: Pirkkakodit</li>
 					<li>Fontti: Arvo, 79pt</li>
-					<li>Reunat: Alyssa 5px</li>
-					<li>Suoja-alue: 5px joka suuntaan. Elementtejä ei saa sijoittaa päälle</li>
+					<li>Reunat: Alyssa, 5px</li>
+					<li>Suoja-alue: 5px joka suuntaan. Elementtejä ei saa sijoittaa päälle</li><br>
 				</ol>
 			</ul>
 			<hr>
@@ -90,7 +91,7 @@
 					<ol>
 					<li>Paragrafit: 16px</li>
 					<li>H-elementit: Koko niiden mukaan</li>
-					<li>Väri: musta</li>
+					<li>Väri: Musta</li>
 					<li>Viivankorkeus: 2em;</li>
 				</ol>
 			</ul>				<!-- Content -->
@@ -99,23 +100,52 @@
 			<ul>
 				<li>Napit</li>
 					<ol>
-					<li>Väri: Linear gradient, #00A8E8, #007EA7</li>
-					<li>Font-weight: 600, Viivankorkeus: 1.5em</li>
-					<li>Reunat: ei, pyöristetty 5px</li>
-					<li>Padding: 5px</li>
-					<li>Hover: Linear gradient, #0097d1, #00759b</li>
+					<li>Väri: <b>#00A7E7</b><span class="color" style="background-color: #00A7E7"></li>
+					<li>Hover: <b>#007EA7</b><span class="color" style="background-color: #007EA7"></li>
+					<li>Viivankorkeus: 1.75em</li>
+					<li>Reunat: Ei ole</li>
+					<li>Padding: 16px</li>
 					<li><button class="button-custom">Esimerkki</button></li>
 				</ol>	
 			<hr>
-			<li>Dopdown</li>
+			<li>Dropdown</li>
 			<div class="dropdown">
-			<button class="dropbtn">Dropdown</button>
-			<div class="dropdown-content">
-				<a href="#">Link 1</a>
-				<a href="#">Link 2</a>
-				<a href="#">Link 3</a>
+				<button class="dropbtn">Dropdown <img src="dropdownimg.png" class="dropdown-icon"></img></button>
+				<div class="dropdown-content">
+					<a href="">Linkki 1</a>
+					<a href="">Linkki 2</a>
+					<a href="">Linkki 3</a>
+				</div>
 			</div>
-			</div>
+			<hr>
+			<li>Formit</li>
+			
+			<form>
+				<label>Tekstikenttä </label><input type="text" readonly value="Esimerkki"><br>
+				<label>Salasanakenttä </label><input type="password" readonly value="Esimfe"><br><br>
+				<label class="container">Checkbox<input type="checkbox" checked="none"><span class="ccheckmark"></span></label>
+				<label class="container">Checkbox<input type="checkbox" checked="checked"><span class="ccheckmark"></span></label>
+				<label class="container">Radionappi<input type="radio" checked="checked" name="radio"><span class="rcheckmark"></span></label>
+				<label class="container">Radionappi<input type="radio" name="radio"><span class="rcheckmark"></span></label>
+				<label>Päivämäärä </label><input type="date"><br>
+				<label>Valinta </label><select>
+					<option>--1--</option>
+					<option>--2--</option>
+					<option>--3--</option>
+				</select><br>
+			</form>
+			<hr>
+			<li>Kuvat</li>
+				<ol>
+					<li class="container-image">
+					<div class="container-image">
+						<img class="container-img" src="logo.svg">	
+					</div>
+					<div class="image-text">
+						<p>Kuvateksti...<br> lisää tekstiä...</p>
+					</div>
+					</li>
+				</ol>
 		</div>
 	</ul>
     <div class="col-sm-2 sidenav">
@@ -124,7 +154,7 @@
 </div>
 
 <footer class="container-fluid text-center">
-  <p>Tyyliopas</p>
+  <p>(Footer teksti, ei muuta)</p>
 </footer>
 
 </body>
