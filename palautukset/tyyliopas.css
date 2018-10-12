@@ -3,6 +3,7 @@ body {
 	margin: 0;
 	font-size: 16px;
 	font-family: 'Verdana', 'Arial Black';
+	line-height: 2em;
 }
 /* Remove the navbar's default margin-bottom and rounded borders */ 
 .navbar {
@@ -39,6 +40,53 @@ hr {
 	float: right;
 	border: solid 1px black;
 }
+.button-custom {
+	background: linear-gradient(#00A8E8, #007EA7);
+	border: none;
+	border-radius:5px;
+	padding: 5px;
+	line-height: 1.5em;
+	font-weight: 600;
+	
+}
+
+.button-custom:hover {
+	background: linear-gradient(#0097d1, #00759b);
+}
+.dropbtn {
+    background-color: #00A8E8;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #d9d9d9;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #007EA7;}
     /* Set black background color, white text and some padding */
 footer {
     background-color: #00171F;

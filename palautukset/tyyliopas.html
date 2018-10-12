@@ -27,7 +27,7 @@
 	  </div>
 	  <ul class="nav navbar-nav">
         <li class="active"><a href="#">Koti</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="#">Lisää</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -39,18 +39,17 @@
 <div class="container-fluid text-center">    
 	<div class="row content">
 		<div class="col-sm-2 sidenav">
-			<p><a href="#elemetit">Peruselementit</a></p>
-			<p><a href="#logo">Logo</a></p>
+			<p><a href="#typografia">Typografia</a></p>
+			<p><a href="#elementit">Peruselementit</a></p>
 			<p><a href="#"></a></p>
 		</div>
 		<div class="col-sm-8 text-left"> 
-			<h1>Tyyliopas</h1>					<!-- Content -->
+			<h1 id="typografia">Tyyliopas</h1>					<!-- Content -->
 			<hr>
-			<h4>Peruselementit</h4>
+			<h4>Typografia</h4>
 			<ul>
 				<li>Väriteema</li>
 					<ol>
-					<li>Kaikki värit, joita käytetään sivustolla</li>
 					<li><b>#00171F</b>, lähes musta<span class="color" style="background-color: #00171F"></span></li>
 					<li><b>#003459</b>, tumman sininen<span class="color" style="background-color: #003459"></span></li>
 					<li><b>#007EA7</b>, sininen<span class="color" style="background-color: #007EA7"></span></li>
@@ -64,9 +63,9 @@
 					<ol>
 					<li>Väri: Musta</li>
 					<li>Fontti: Verdana, Arial Black</li>
-					<li>Koko: 1 em, headereille numeron mukaan</li>
-				</ol>
+					</ol>
 			</ul>
+			<hr>
 			<ul>
 				<li>Navigointi</li>
 					<ol>
@@ -75,8 +74,50 @@
 					<li>Koko: 1 em, headereille numeron mukaan</li>
 				</ol>
 			</ul>
-		<hr>
-    </div>
+			<hr>
+			<ul id="logo">
+				<li>Logo</li>
+					<ol>
+					<li>Teksti: Pirkkakodit</li>
+					<li>Fontti: Arvo, 79pt</li>
+					<li>Reunat: Alyssa 5px</li>
+					<li>Suoja-alue: 5px joka suuntaan. Elementtejä ei saa sijoittaa päälle</li>
+				</ol>
+			</ul>
+			<hr>
+			<ul>
+				<li>Typografiaa</li>
+					<ol>
+					<li>Paragrafit: 16px</li>
+					<li>H-elementit: Koko niiden mukaan</li>
+					<li>Väri: musta</li>
+					<li>Viivankorkeus: 2em;</li>
+				</ol>
+			</ul>				<!-- Content -->
+			<hr>
+			<h4 id="elementit">Peruselementit</h4>
+			<ul>
+				<li>Napit</li>
+					<ol>
+					<li>Väri: Linear gradient, #00A8E8, #007EA7</li>
+					<li>Font-weight: 600, Viivankorkeus: 1.5em</li>
+					<li>Reunat: ei, pyöristetty 5px</li>
+					<li>Padding: 5px</li>
+					<li>Hover: Linear gradient, #0097d1, #00759b</li>
+					<li><button class="button-custom">Esimerkki</button></li>
+				</ol>	
+			<hr>
+			<li>Dopdown</li>
+			<div class="dropdown">
+			<button class="dropbtn">Dropdown</button>
+			<div class="dropdown-content">
+				<a href="#">Link 1</a>
+				<a href="#">Link 2</a>
+				<a href="#">Link 3</a>
+			</div>
+			</div>
+		</div>
+	</ul>
     <div class="col-sm-2 sidenav">
     </div>
   </div>
